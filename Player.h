@@ -19,13 +19,24 @@ class Player
         Player(GameMechs* thisGMRef);
         ~Player();
 
-        void getPlayerPos(objPos &returnPos); // Upgrade this in iteration 3.
+        // void getPlayerPos(objPos &returnPos); // Upgrade this in iteration 3.
+        objPosArrayList* getPlayerPosList();
         void updatePlayerDir();
         void movePlayer();
 
+        // Added 
+        int getScore() const;
+        bool detectSnakeCollision(const objPos &headPos) const;
+        void setEatFood(bool eatenFood);
+
     private:
-        objPos playerPos;   // Upgrade this in iteration 3.       
+        // objPos playerPos;  // Upgrade this in iteration 3.
+        objPosArrayList* playerPosList;        
         enum Dir myDir;
+
+        // Added
+        bool eatFood;
+        int gameScore;
 
         // Need a reference to the Main Game Mechanisms
         GameMechs* mainGameMechsRef;
